@@ -3,16 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Weather app</title>
   </head>
+
   <body>
-    <nav>
-      <button class="openNav">#</button>
-      <button class="menuBtn">Home</button
-      ><button class="menuBtn">About Us</button
-      ><button class="menuBtn">Contact</button
-      ><button class="menuBtn">FAQ</button
-      ><button class="menuBtn">Location</button>
-    </nav>
+    <header>
+      <nav>
+        <button class="openNav">#</button>
+        <button class="menuBtn">Home</button
+        ><button class="menuBtn">About Us</button
+        ><button class="menuBtn">Contact</button
+        ><button class="menuBtn">FAQ</button
+        ><button class="menuBtn">Location</button>
+      </nav>
+    </header>
+    <div class="main">
+      <h1>Weather Buddy</h2>
+      <form action="results.html" method="get" class="locationForm">
+        <label for="location" >Location</label>
+        <input type="text" id="location" name="location">
+        <button type="submit">Check</button>
+      </form>
+      
+    </div>
+    <footer><h5>Made by imaciej10</h5></footer>
   </body>
 </html>
