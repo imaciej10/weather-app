@@ -30,6 +30,16 @@ const getForecastData = function (data) {
   return forecast;
 };
 
+const getLocationData = function (data) {
+  const location = {
+    country: data.country,
+    localTime: data.localtime,
+    city: data.name,
+  };
+
+  return location;
+};
+
 export const fetchWeather = async function (location) {
   try {
     const response = await fetch(
@@ -42,11 +52,11 @@ export const fetchWeather = async function (location) {
       throw new Error("Something went wrong" + response.statusText);
     }
     const data = await response.json();
-
     const currentWeather = getWeatherData(data.current);
     const forecastedWeather = getForecastData(data.forecast.forecastday);
+    const locationData = getLocationData(data.location);
 
-    return [currentWeather, forecastedWeather];
+    return [currentWeather, forecastedWeather, locationData];
   } catch (error) {
     console.error("There was a problem", error);
     throw new Error(`Something went wrong, ${error.message} appeared`);

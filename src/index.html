@@ -17,15 +17,93 @@
         ><button class="menuBtn">Location</button>
       </nav>
     </header>
-    <div class="main">
+    <div class="search">
       <h1>Weather Buddy</h2>
       <form action="results.html" method="get" class="locationForm">
         <label for="location" >Location</label>
-        <input type="text" id="location" name="location">
-        <button type="submit">Check</button>
+        <input type="text"  id="location" name="location">
+        <button type="submit" id="check">Check</button>
       </form>
-      
     </div>
+      <div class="weather">
+        <div class="location">
+          <p class="city"></p>
+          <p class="country"></p>
+          <p class="time"></p>
+        </div>
+        <div class="today">
+          <img src="" alt="" class="conditionImg">
+          <h3 class="conditionToday"></h3>
+          <div class="temperature parameter">
+            <img src="" alt="" class="tempImg">
+            <p class="tempToday"></p>
+          </div>
+          <div class="feelsLike parameter">
+            <img src="" alt="" class="feelsLikeImg">
+            <p class="feelsLikeToday"></p>
+          </div>
+          <div class="wind parameter">
+            <img src="" alt="" class="windImg">
+            <p class="windToday"></p>
+          </div>
+          <div class="humidity parameter">
+            <img src="" alt="" class="humidityImg">
+            <p class="humidityToday"></p>
+          </div>
+          <div class="pressure parameter">
+            <img src="" alt="" class="pressureImg">
+            <p class="pressureToday"></p>
+          </div>
+        </div>
+        <div class="forecast" id="tomorrow">
+          <p class="forecastDate"></p>
+          <img src="" alt="forecasted weather" class="forecastIcon">
+          <div class="forecastedTemperature">
+            <img src="" alt="temperatureIcon" id="forecastedTemperatureImg" class="forecastParamIcon">
+            <p class="forecastedTemperature"></p>
+          </div>
+          <div class="forecastedRain">
+            <img src="" alt="rainIcon" id="forecastedRainImg" class="forecastParamIcon">
+            <p class="forecastedRain"></p>
+          </div>
+          <div class="forecastedHumidity">
+            <img src="" alt="humidityIcon" id="forecastedHumidity" class="forecastParamIcon">
+            <p class="forecastedHumidity"></p>
+          </div>
+        </div>
+        <div class="forecast" id="followingDay">
+            <p class="forecastDate"></p>
+            <img src="" alt="forecasted weather"  class="forecastIcon">
+            <div class="forecastedTemperature">
+              <img src="" alt="temperatureIcon" id="forecastedTemperatureImg" class="forecastParamIcon">
+              <p class="forecastedTemperature"></p>
+            </div>
+            <div class="forecastedRain">
+              <img src="" alt="rainIcon" id="forecastedRainImg" class="forecastParamIcon">
+              <p class="forecastedRain"></p>
+            </div>
+            <div class="forecastedHumidity">
+              <img src="" alt="humidityIcon" id="forecastedHumidity" class="forecastParamIcon">
+              <p class="forecastedHumidity"></p>
+            </div>
+        </div>
+        <div class="forecast" id="inTwoDays">
+            <p class="forecastDate"></p>
+            <img src="" alt="forecasted weather" class="forecastIcon">
+            <div class="forecastedTemperature">
+              <img src="" alt="temperatureIcon" id="forecastedTemperatureImg" class="forecastParamIcon">
+              <p class="forecastedTemperature"></p>
+            </div>
+            <div class="forecastedRain">
+              <img src="" alt="rainIcon" id="forecastedRainImg" class="forecastParamIcon">
+              <p class="forecastedRain"></p>
+            </div>
+            <div class="forecastedHumidity">
+              <img src="" alt="humidityIcon" id="forecastedHumidity" class="forecastParamIcon">
+              <p class="forecastedHumidity"></p>
+            </div>
+        </div>
+      </div>
     <footer><h5>Made by imaciej10</h5></footer>
   </body>
 </html>
