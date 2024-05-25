@@ -160,7 +160,6 @@ export const updateWeather = function (weatherData) {
 };
 
 export const updateForecast = function (weatherData) {
-  console.log(weatherData);
   forecastContainers.forEach((container, index) =>
     appendContainerData(container, weatherData[index])
   );
