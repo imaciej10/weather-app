@@ -4,9 +4,8 @@ const getWeatherData = function (data) {
     temperature: data.temp_c,
     feelsLike: data.feelslike_c,
     wind: data.wind_mph,
-    pressure: data.pressure_in,
+    pressure: data.pressure_mb,
     humidity: data.humidity,
-    cloud: data.cloud,
     isday: data.is_day,
   };
   return weather;
@@ -52,6 +51,7 @@ export const fetchWeather = async function (location) {
       throw new Error("Something went wrong" + response.statusText);
     }
     const data = await response.json();
+    console.log(data);
     const currentWeather = getWeatherData(data.current);
     const forecastedWeather = getForecastData(data.forecast.forecastday);
     const locationData = getLocationData(data.location);

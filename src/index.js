@@ -6,38 +6,40 @@ const openNavBtn = document.querySelector(".openNav");
 const menuButtons = document.querySelectorAll(".menuBtn");
 const form = document.querySelector(".locationForm");
 const locationInput = document.getElementById("location");
-const inputField = document.getElementById("location");
+const errorSpan = document.querySelector(".error");
+const submitButton = document.querySelector("#check");
 
 document.addEventListener("DOMContentLoaded", () => {
-  function activateDropdown(menuBttns, openBtn) {
-    openBtn.addEventListener("click", () => {
-      menuBttns.forEach((button) => button.classList.toggle("active"));
-      openBtn.classList.toggle("toggled");
-    });
-  }
-
   activateDropdown(menuButtons, openNavBtn);
-  setDefaultData("San Francisco");
+  getWeatherData("San Francisco");
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    let current;
-    let forecasted;
-    let location;
-    try {
-      [current, forecasted, location] = await fetchWeather(locationInput.value);
-      console.log(location);
-      updateWeather(current);
-      updateForecast(forecasted);
-      updateLocation(location);
-    } catch (error) {
-      console.error("Error fetching weather:", error);
-    }
+    if (!validateInput()) return;
+    await getWeatherData(locationInput.value);
     form.reset();
   });
 });
 
-const setDefaultData = async function (place) {
+locationInput.addEventListener("input", () => {
+  validateInput();
+});
+
+submitButton.addEventListener("click", (event) => {
+  if (!validateInput()) {
+    event.preventDefault();
+    alert("Please provide valid city name");
+  }
+});
+
+function activateDropdown(menuBttns, openBtn) {
+  openBtn.addEventListener("click", () => {
+    menuBttns.forEach((button) => button.classList.toggle("active"));
+    openBtn.classList.toggle("toggled");
+  });
+}
+
+const getWeatherData = async function (place) {
   let current;
   let forecasted;
   let location;
@@ -51,14 +53,18 @@ const setDefaultData = async function (place) {
   }
 };
 
-inputField.addEventListener("input", () => {
-  const inputValue = inputField.value.trim();
+const validateInput = function () {
   const pattern = /^[A-Za-z][A-Za-z\s'-]{2,18}[A-Za-z]$/;
+  const inputValue = locationInput.value.trim();
 
   if (!pattern.test(inputValue)) {
-    inputField.classList.add("invalid");
-  } else {
-    inputField.classList.remove("invalid");
-    inputField.classList.add("valid");
+    errorSpan.textContent = "Invalid city name";
+    locationInput.classList.remove("valid");
+    locationInput.classList.add("invalid");
+    return false;
   }
-});
+  locationInput.classList.remove("invalid");
+  locationInput.classList.add("valid");
+  errorSpan.textContent = "";
+  return true;
+};

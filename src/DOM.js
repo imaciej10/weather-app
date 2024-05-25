@@ -48,13 +48,13 @@ function importAll(r) {
   return images;
 }
 
-function formatIconElement(element, source) {
+const formatIconElement = function (element, source) {
   element.classList.add("weatherIcon");
   element.src = source;
   return element;
-}
+};
 
-function addConditionImage(weatherData) {
+const addConditionImage = function (weatherData) {
   const isDay = weatherData.isday ? true : false;
   const conditionCode = weatherData.condition.code;
   let weatherIconCode;
@@ -71,24 +71,24 @@ function addConditionImage(weatherData) {
   } else {
     conditionImg.src = nightImages[`${weatherIconCode}.png`];
   }
-}
+};
 
-function fillParameterValues(weatherData) {
+const fillParameterValues = function (weatherData) {
   conditionToday.textContent = weatherData.condition.text;
   feelsLikeToday.textContent = weatherData.feelsLike + " °C";
-  pressureToday.textContent = weatherData.pressure + " bar";
+  pressureToday.textContent = weatherData.pressure + " hPa";
   tempToday.textContent = weatherData.temperature + " °C";
   windToday.textContent = weatherData.wind + " km/h";
   humidityToday.textContent = weatherData.humidity + " %";
-}
+};
 
-function addParameterIcons() {
+const addParameterIcons = function () {
   formatIconElement(feelsLikeImg, feelsLikeIcon);
   formatIconElement(pressureImg, pressureIcon);
   formatIconElement(windImg, windIcon);
   formatIconElement(tempImg, temperatureIcon);
   formatIconElement(humidityImg, humidityIcon);
-}
+};
 
 const addForecastConditionImage = function (image, code) {
   let weatherIconCode;
@@ -125,7 +125,7 @@ const fillOutForecastData = function (
   else if (id === "inTwoDays") date.textContent = inThreeDays.toDateString();
 };
 
-function appendContainerData(container, dailyForecast) {
+const appendContainerData = function (container, dailyForecast) {
   const conditionCode = dailyForecast.condition.code;
   const forecastDate = container.querySelector(".forecastDate");
   const weatherImg = container.querySelector(".forecastIcon");
@@ -152,7 +152,7 @@ function appendContainerData(container, dailyForecast) {
     dailyForecast,
     container.id
   );
-}
+};
 export const updateWeather = function (weatherData) {
   addConditionImage(weatherData);
   fillParameterValues(weatherData);

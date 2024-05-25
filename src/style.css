@@ -8,24 +8,40 @@
   font-size: 16px;
   font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
   font-weight: normal;
-  --background-color: orange;
-  --forecast--color: purple;
-  --location--color: green;
-  --footer--color: white;
-  --header--color: blue;
-  --accent-color: orange;
+  --nav-color: #79addc;
+  --background-color: #ffee93;
+  --forecast--color: #fcf5c7;
+  --location--color: #f0a868;
+  --footer--color: #f0a868;
+  --header--color: #ffc09f;
+  --accent-color: #e4ff1a;
+}
+
+button#check:hover,
+button.openNav:hover {
+  cursor: pointer;
+}
+
+.gitHubLogo:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+nav *:hover {
+  color: red;
+  cursor: pointer;
 }
 
 /* header */
 
 nav {
-  padding: 1rem;
+  padding: 2rem 1rem;
   width: 100vw;
   height: 50px;
-  background: rgb(0, 0, 0, 0.7);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: var(--nav-color);
 }
 
 .menuBtn,
@@ -34,8 +50,8 @@ nav {
   width: 15ch;
   border: none;
   background: none;
-  font-size: 2rem;
-  color: yellow;
+  font-size: 2.5rem;
+  color: var(--accent-color);
 }
 
 .menuBtn {
@@ -57,7 +73,7 @@ body {
   margin: auto;
   width: 100vw;
   height: 100vh;
-  background-color: lightgoldenrodyellow;
+  background-color: var(--background-color);
 }
 
 .search {
@@ -67,9 +83,9 @@ body {
   align-items: center;
   gap: 2rem;
   width: 100%;
-  height: 20%;
+  height: 230px;
   padding: 2rem;
-  background-color: rgb(64, 224, 208, 0.6);
+  background-color: var(--header--color);
 }
 
 .weather {
@@ -77,15 +93,16 @@ body {
   padding: 2rem;
   grid-template: repeat(2, 1fr) / repeat(3, 1fr);
   gap: 1rem;
-  background-color: orange;
-  height: 80%;
-  width: 100%;
+  background-color: var(--background-color);
+  height: 85vh;
+  width: 100vw;
 }
 
 .location {
   grid-area: 1 / 1 / 2 / 2;
-  background-color: purple;
-  border-radius: 20% 80% 41% 59% / 29% 26% 74% 71%;
+  background-color: var(--location--color);
+  color: var(--background-color);
+  border-radius: 1rem;
 }
 
 #tomorrow {
@@ -104,20 +121,23 @@ body {
 
 .today {
   grid-area: 1 / 2 / 2 / 3;
-  background-color: #fff;
+  background-color: var(--forecast--color);
   border-radius: 1rem;
+  gap: 1.5rem;
   display: grid;
   grid-template: repeat(6, 1fr) / repeat(2, 1fr);
-  padding: 2rem;
-  align-items: center;
+  padding: 1rem 2rem;
+  align-items: start;
 }
 
 .conditionToday {
-  font-size: 2rem;
+  font-size: 2.5rem;
   grid-row: 1-3;
+  justify-self: start;
+  align-self: center;
 }
 .weatherIcon {
-  height: 90px;
+  height: 70px;
   width: auto;
 }
 
@@ -128,6 +148,7 @@ body {
 .conditionImg {
   grid-area: 1 / 2 / 2 / 3;
   justify-self: end;
+  align-self: stretch;
 }
 
 .temperature {
@@ -161,7 +182,7 @@ body {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 /* location */
@@ -175,22 +196,22 @@ p {
 }
 
 .city {
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: bold;
 }
 
 .country {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 
 .time {
-  font-size: 1.3rem;
+  font-size: 2.2rem;
 }
 
 /* forecast */
 
 .forecast {
-  background-color: brown;
+  background-color: var(--forecast--color);
   padding: 2rem;
   border-radius: 1rem;
   display: grid;
@@ -199,21 +220,25 @@ p {
   overflow: auto;
 }
 
+.today,
+.forecast {
+  border: 2px solid var(--footer--color);
+}
+
 .forecastDate {
   grid-area: 1/ 1/ 2/ 4;
   justify-self: center;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .forecastIcon {
   grid-area: 2 / 1 / 3 / 4;
   justify-self: center;
-  height: 50px;
-  width: auto;
 }
 
 .forecastedTemperature {
   grid-area: 3 / 1 / 5 / 2;
+  object-fit: contain;
 }
 
 .forecastedRain {
@@ -243,18 +268,24 @@ p {
   display: flex;
   gap: 2rem;
   align-items: center;
+  position: relative;
 }
 
 button#check {
-  padding: 0.6rem 1.5rem;
-  font-size: 1.3rem;
+  padding: 0.5rem 1.7rem;
+  font-size: 2rem;
+  font-weight: 600;
   border-radius: 0.7rem;
   outline: none;
   border: none;
+  color: var(--footer--color);
+  background-color: var(--background-color);
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.4rem;
+  letter-spacing: 0.3rem;
+  text-transform: capitalize;
 }
 
 label {
@@ -263,11 +294,21 @@ label {
 }
 
 input {
-  padding: 1rem;
-  font-size: 1.3rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.5rem;
   border: none;
   outline: none;
+  background-color: var(--forecast--color);
   border-radius: 0.5rem;
+  color: black;
+}
+
+.error {
+  position: absolute;
+  top: 65px;
+  left: 190px;
+  color: red;
+  font-size: 1.2rem;
 }
 
 input.valid {
@@ -281,11 +322,20 @@ input.invalid {
 /* footer */
 
 footer {
-  background-color: red;
+  background-color: var(--footer--color);
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-items: center;
   font-size: 2rem;
+  padding: 1rem;
+  gap: 10px;
   margin-bottom: 0;
-  height: 10%;
+  height: 7vh;
+  letter-spacing: 0.1rem;
+}
+
+.gitHubLogo {
+  height: 50px;
+  width: auto;
 }
