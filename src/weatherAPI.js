@@ -42,7 +42,7 @@ const getLocationData = function (data) {
 export const fetchWeather = async function (location) {
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=2f8de12621774ad2bad70438242305&q=${location}&days=4`,
+      `https://api.weatherapi.com/v1/forecast.json?key=2f8de12621774ad2bad70438242305&q=${location}&days=4`,
       { mode: "cors" }
     );
 
@@ -51,7 +51,6 @@ export const fetchWeather = async function (location) {
       throw new Error("Something went wrong" + response.statusText);
     }
     const data = await response.json();
-    console.log(data);
     const currentWeather = getWeatherData(data.current);
     const forecastedWeather = getForecastData(data.forecast.forecastday);
     const locationData = getLocationData(data.location);
