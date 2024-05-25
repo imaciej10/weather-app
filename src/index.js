@@ -2,7 +2,7 @@ import "./style.css";
 import { fetchWeather } from "./weatherAPI";
 import { updateWeather, updateForecast, updateLocation } from "./DOM";
 
-const openNavBtn = document.querySelector(".openNav");
+const openMenuBtn = document.querySelector(".openMenu");
 const menuButtons = document.querySelectorAll(".menuBtn");
 const form = document.querySelector(".locationForm");
 const locationInput = document.getElementById("location");
@@ -10,7 +10,7 @@ const errorSpan = document.querySelector(".error");
 const submitButton = document.querySelector("#check");
 
 document.addEventListener("DOMContentLoaded", () => {
-  activateDropdown(menuButtons, openNavBtn);
+  activateDropdown(menuButtons, openMenuBtn);
   getWeatherData("San Francisco");
 
   form.addEventListener("submit", async (event) => {
@@ -54,7 +54,7 @@ const getWeatherData = async function (place) {
 };
 
 const validateInput = function () {
-  const pattern = /^[A-Za-z][A-Za-z\s'-]{2,18}[A-Za-z]$/;
+  const pattern = /^[A-Za-z][A-Za-z\s'-]{0,18}[A-Za-z]$/;
   const inputValue = locationInput.value.trim();
 
   if (!pattern.test(inputValue)) {
