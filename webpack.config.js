@@ -25,7 +25,7 @@ module.exports = {
       patterns: [
         {
           from: "src/image/svg",
-          to: "images", // output path for images
+          to: "image", // output path for images
         },
       ],
     }),
